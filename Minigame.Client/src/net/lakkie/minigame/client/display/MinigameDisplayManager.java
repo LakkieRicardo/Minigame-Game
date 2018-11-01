@@ -35,6 +35,7 @@ public class MinigameDisplayManager implements KeyListener {
 		this.frame.textPane.setCaretPosition(len);
 		this.frame.textPane.setCharacterAttributes(aset, false);
 		this.frame.textPane.replaceSelection(message);
+		this.frame.textPane.setEditable(true);
 	}
 
 	public void submitMessage() {

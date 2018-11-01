@@ -1,5 +1,6 @@
 package net.lakkie.minigame.client.display;
 
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -72,7 +73,9 @@ public class MinigameDisplayFrame extends JFrame {
 		gbc_messageInputButton.gridy = 2;
 		this.contentPane.add(this.messageInputButton, gbc_messageInputButton);
 //		this.textPane.setEditable(false);
+		setMinimumSize(new Dimension(400, 250));
 		setVisible(true);
+		textPane.setFocusable(false);
 		new MinigameDisplayManager(this);
 	}
 

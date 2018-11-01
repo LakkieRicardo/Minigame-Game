@@ -12,7 +12,7 @@ public class MinigameServer {
 
 	private ServerSocket socket;
 	private Thread listener;
-	private final List<Socket> clients = new ArrayList<Socket>();
+	private final List<MGServerClient> clients = new ArrayList<MGServerClient>();
 	private boolean running;
 
 	public MinigameServer(int port) {
@@ -32,9 +32,7 @@ public class MinigameServer {
 		try {
 			while (this.running) {
 				Socket acceptee = this.socket.accept();
-				this.clients.add(acceptee);
-				MGLoggerServer.getInstance().info("Sending message...");
-				acceptee.getOutputStream().write("Test message\n".getBytes());
+				this.clients.add(new MGServerClient(acceptee, this));
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

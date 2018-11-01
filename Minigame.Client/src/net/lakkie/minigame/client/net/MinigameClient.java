@@ -37,9 +37,11 @@ public class MinigameClient {
 	private void listen() {
 		try {
 			while (this.runningClient) {
-				String liner = this.reader.readLine();
-				MGLoggerClient.getInstance().info("Received \"" + liner + "\"\n");
-				MinigameDisplayManager.instance.logMessage(liner + "\n", Color.red);
+				if (this.reader.ready()) {
+					String liner = this.reader.readLine();
+					MGLoggerClient.getInstance().info("Received \"" + liner + "\"\n");
+					MinigameDisplayManager.instance.logMessage(liner + "\n", Color.red);
+				}
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
